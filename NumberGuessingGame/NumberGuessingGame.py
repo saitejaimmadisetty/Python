@@ -1,15 +1,24 @@
 import random
 
 def Number_Game():
-    userGuessedNum = int(input("Enter the number you are guessing from 0 to 3 :"))
-    options = [0,1,2,3]
-    computerChoice = random.choice(options)
-    if (userGuessedNum == computerChoice) :
-        print('congrats , you guessed the correct number')
-    else :
-        print(f'''Wrong , Your choice is {userGuessedNum} and computer choice is {computerChoice}.
-               please try again''')
+    attempts = 0
+    print('Guess a number between 0 to 9')
+    computerChoice = random.randint(0,9)
+
+    while True:
+        try:
+            userGuessedNum = int(input("Enter the number:"))
+            attempts+=1
+            if (userGuessedNum == computerChoice) :
+                print(f'congrats , you guessed the correct number in {attempts} attempts')
+                break 
+            elif userGuessedNum<computerChoice :
+                print("enter higher number")
+            else :
+                print('enter Lower number')
+
+        except ValueError:
+            print('Enter numeric values only')
    
-    return computerChoice
 
 Number_Game()
